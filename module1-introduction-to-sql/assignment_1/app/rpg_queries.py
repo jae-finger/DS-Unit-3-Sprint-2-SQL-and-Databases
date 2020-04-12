@@ -79,3 +79,57 @@ query_q8 = "SELECT COUNT(item_id)/COUNT(distinct character_id) as number_of_weap
 results_q8 = str((curs.execute(query_q8).fetchall())).strip('[(').strip(',)]')
 print(f'Each character has {results_q8} weapon on average.')
 print("----------------")
+
+
+# Mike's solution code
+# -- On average, how many Items does each Character have?
+# -- return a single number
+# -- intermediate step:
+# --     row per character (302)
+# --     columns: character_id, name, item_count
+# ​
+# select avg(item_count) as avg_items
+# from (
+#     select
+#       c.character_id
+#       ,c."name" as character_name
+#       ,count(distinct inv.item_id) as item_count
+#     from charactercreator_character c
+#     left join charactercreator_character_inventory inv ON c.character_id = inv.character_id
+#     group by 1, 2
+# ) subq
+
+
+# -- are there any characters without items?
+# -- no (we saw no counts > 1)
+# select character_id, item_id, count(distinct id) as row_count
+# from charactercreator_character_inventory
+# group by character_id, item_id
+# order by 3 desc
+
+# --2.- How many of each specific subclass?
+# -- How many of each specific subclass?
+# -- Expecting cleric total = 75
+# -- Expecting fighter total = 68
+# -- Expecting mage total = 108
+# -- Expecting necro total = 11
+# -- Expecting thief total = 51
+# SELECT 
+#         ccc.character_id as character 
+#         ,count(distinct c.character_ptr_id) as total_clerics
+#         ,count(distinct f.character_ptr_id) as total_fighters
+#         ,count(distinct m.character_ptr_id) as total_mages
+#         ,count(distinct n.mage_ptr_id) as total_necromancers
+#         ,count(distinct t.character_ptr_id) as total_thieves
+# FROM charactercreator_character ccc 
+# LEFT JOIN charactercreator_fighter f  
+#     ON character = f.character_ptr_id
+# LEFT JOIN charactercreator_cleric c 
+#     ON character = c.character_ptr_id
+# LEFT JOIN charactercreator_mage m 
+#     ON character =  m.character_ptr_id
+# LEFT JOIN charactercreator_necromancer n 
+#     ON character = n.mage_ptr_id
+# LEFT JOIN charactercreator_thief t 
+#     ON character = t.character_ptr_id
+# --GROUP BY character 
