@@ -1,0 +1,6 @@
+{
+    "python.pythonPath": "/Users/jonfinger/.local/share/virtualenvs/module2-sql-for-analysis-_ZNN6O36/bin/python",
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
+}
