@@ -17,7 +17,12 @@ df = pandas.read_csv(CSV_FILEPATH)
 df.index += 1
 
 # 2. Connect to PG DataBase
-conn = psycopg2.connect(host="drona.db.elephantsql.com", database="detgahkr", user="detgahkr", password="mjCzHNJfp7ucjtI6_KxwBuxrV13BPuZ7")
+DB_HOSTNAME = os.getenv("DB_HOSTNAME")
+DB_NAME = os.getenv("DB_NAME")
+DB_USER =  os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+
+conn = psycopg2.connect(host=DB_HOSTNAME, database=DB_NAME, user=DB_USER, password=DB_PASSWORD)
 curs = conn.cursor()
 
 # 3. Create a table on the server
