@@ -64,4 +64,18 @@ for row in characters_table:
 
 print("DOCS:", collection.count_documents({}))
 
-#Succesfully copied the 302 row file!
+# Succesfully copied the 302 row file!
+#
+# Assignment question: How was working with MongoDB different
+# from working with PostgreSQL? What was easier, and what was harder?"
+#
+# I feel that working with MongoDB was easier than I thought. I figured
+# that since I just started learning SQL, learning something similar yet
+# different might be challenging. Instead, it was similar enough to provide
+# some good context.
+# 
+# I found it easier to translate the SQL line of thinking even though at
+# first I thought MongoDB looked very different with it's data format.
+# However, what was harder than I thought was the terms. It was funny to see
+# even Mike struggle to say database and table instead of the NoSQL collection
+# and documents. :) 
