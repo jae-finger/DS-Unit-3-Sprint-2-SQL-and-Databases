@@ -5,10 +5,6 @@ Author: Jonathan Finger
 
 # 0. Import Packages
 import os
-import pandas
-import psycopg2
-from psycopg2.extras import execute_values
-import sqlite3
 
 # 1. Load rpg database (loads if in "data" directory)
 DBFILEPATH = os.path.join(os.path.dirname(__file__), "data", "rpg_db.sqlite3")
